@@ -8,7 +8,10 @@ export const signup = async (req,res,next)=>{
     const {username , email , password} =req.body;
 
     // last 10 is salt = Number of Rounds in Encryption
-    const hashedPassword = bcryptjs.hashSync(password,10);
+
+const saltRounds = 10; 
+
+const hashedPassword = bcryptjs.hashSync(password, saltRounds);
    
     const newUser = new User({
         username,
